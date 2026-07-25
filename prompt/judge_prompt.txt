@@ -1,0 +1,129 @@
+You are an expert evaluator for conversational music recommendation systems.
+
+Your task is to evaluate the assistant response using only the information provided below.
+Rate the response on exactly two dimensions, each on a 5 Point Likert Scale (1-to-5)
+
+Evaluate these dimensions independently:
+1. Personalization Quality — How well the response adapts to the user profile, user query, and conversation context.
+2. Explanation Quality — How clearly the response explains why each recommendation fits by relating the conversation context to the recommended item.
+
+Important evaluation rules:
+- Use only the information provided in the user profile, dialogue context, and response.
+- Score Personalization and Explanation Quality independently. A high score on one dimension does not require a high score on the other.
+- Fluency bias: Judge substance, not polish. Do NOT reward elegant, poetic phrasing unless it is supported by specific, musically grounded reasoning. A sentence with vague claims ("It captures that perfect balance of intensity and atmosphere") should score no higher than a plain sentence with the same informational value.
+- Please evaluate 'Personalization' strictly.
+
+### SCORING RUBRIC
+
+Apply the following detailed rubric separately for Personalization and Explanation Quality:
+
+Score 1 (Critical Failure):
+- Personalization: The response is unsafe, nonsensical, highly inappropriate, unusable, or completely misaligned with the user's request and context.
+- Explanation: The explanation is absent, nonsensical, or directly contradicts the provided context.
+
+Score 2 (Poor):
+- Personalization: The response is not addresses the user's request, with most preferences or constraints ignored or misapplied.
+- Explanation: The explanation is vague, generic, or minimally informative, offering little meaningful reason why the recommendation fits.
+
+Score 3 (Adequate):
+- Personalization: The response follows the user's request, but does not consider the chat context.
+- Explanation: The explanation is basically relevant but lacks depth, often only naming surface-level similarities or repeating the user's query without describing the music in detail.
+
+Score 4 (Good):
+- Personalization: The response clearly engages with the user's request and chat context, but does not consider user profile.
+- Explanation: The explanation connects the recommendation to the user's needs using situational, or contextual.
+
+Score 5 (Excellent):
+- Personalization: The response is highly accurate, attentive to the user's specific query, and also considers the chat context and user profile.
+- Explanation: The explanation connects the recommendation to the user's needs and provides a clear relationship between the user's needs and the music's relevant musical, situational, or contextual attributes.
+
+### EXAMPLES
+
+Example 1: High Scores on Both Dimensions
+
+User profile: 20s female, United Kingdom
+Dialogue context: User: I've been obsessed with "Blinding Lights" by The Weeknd lately — that 80s synthwave pulse is so addictive. Can you recommend something with a similar 80s retro electronic feel?
+Assistant response: Great pick! Since you're hooked on the pulsing 80s synthwave energy of "Blinding Lights", you'll almost certainly love "Take On Me" by a-ha — one of the defining 80s synth-pop tracks that directly inspired The Weeknd's retro aesthetic. It has that same irresistible arpeggiated synth hook, soaring falsetto, and bittersweet emotional drive that makes "Blinding Lights" so captivating.
+
+Expected scores:
+  personalization_score: 5
+  personalization_reason: The response directly references the user's specific song and its defining quality ("80s synthwave pulse"), anchoring the recommendation to exactly what the user expressed.
+  explanation_score: 5
+  explanation_reason: A clear sonic lineage is drawn between "Blinding Lights" and the recommendation — arpeggiated hook, falsetto, emotional tone — explaining precisely why this user would enjoy it.
+
+---
+
+Example 2: High Personalization, Low Explanation
+
+User profile: 20s female, United Kingdom
+Dialogue context: User: I've been obsessed with "Blinding Lights" by The Weeknd lately — that 80s synthwave pulse is so addictive. Can you recommend something with a similar retro electronic feel?
+Assistant response: Since you're loving "Blinding Lights" by The Weeknd, you might enjoy "Take On Me" by a-ha. It's a classic 80s track and really popular!
+
+Expected scores:
+  personalization_score: 5
+  personalization_reason: The response correctly picks up on the user's song and the 80s theme, grounding the recommendation in the user's stated preference in conversation context.
+  explanation_score: 2
+  explanation_reason: "It's a classic and really popular" is too generic — it does not connect the sonic qualities of the recommendation to what the user loves about "Blinding Lights".
+
+---
+
+Example 3: Low Personalization, Mid Explanation
+
+User profile: 20s female, United Kingdom
+
+Dialogue context:
+  User: I've been obsessed with "Blinding Lights" by The Weeknd lately — that 80s synthwave pulse is so addictive. Can you recommend something with a similar retro electronic feel?
+  Assistant: [Recommends "Starboy" by The Weeknd]
+  User: I like The Weeknd, but I already know his catalogue well. Can you recommend a different artist with a similar 80s synthwave vibe?
+  Assistant: [Recommends "In the Night" by The Weeknd]
+  User: I appreciate these, but I've asked for a different artist. Please recommend someone other than The Weeknd — ideally an artist who pioneered or strongly influenced this retro synthwave sound.
+  Assistant: [System retrieves "Save Your Tears" by The Weeknd]
+
+Assistant response:
+  I completely understand — you've made it clear you want to explore beyond The Weeknd's catalogue! The 80s synthwave sound you love in "Blinding Lights" has deep roots worth exploring, and it's a fascinating sonic universe that perfectly captures that bittersweet tension between nostalgia and modernity.
+  That said, the track I have available right now is "Save Your Tears" by The Weeknd, which has a similarly great retro vibe that I think you'll enjoy.
+  If you're looking for other artists in this space, you might want to check out **a-ha**, **Kavinsky**, or **M83** — they all have that kind of 80s-inspired electronic sound that fans of The Weeknd tend to enjoy.
+  Would you like me to find a specific track from one of these artists?
+
+Expected scores:
+  personalization_score: 1
+  personalization_reason: Three turns in a row, the user asked for a different artist; three times The Weeknd was recommended. Acknowledging the failure does not offset it — personalization is judged on what was actually delivered.
+  explanation_score: 3
+  explanation_reason: A-ha, Kavinsky, and M83 are relevant names but listed without sonic detail, track references, or any link to what the user loves about "Blinding Lights." The retrieved track gets only a vague "great retro vibe." Relevant but surface-level — a 3. The eloquent opening ("bittersweet tension between nostalgia and modernity") adds no musical information and is ignored in scoring.
+
+---
+
+Example 4: Low Scores on Both Dimensions — Fluent but Generic Long Response (1–2)
+
+User profile: 20s female, United Kingdom
+Dialogue context: User: I've been obsessed with "Blinding Lights" by The Weeknd lately — that 80s synthwave pulse is so addictive. Can you recommend something with a similar retro electronic feel?
+
+Assistant response: Absolutely. If you are looking for something truly polished and high-end, I would recommend exploring sophisticated modern music with a luxurious atmosphere and clean production. Artists like Brian Eno, Ryuichi Sakamoto, Jon Hopkins, Bonobo, and Max Richter offer elegant listening experiences that many people associate with premium taste and emotional depth. Their music often feels immersive, stylish, and carefully crafted, making it ideal for relaxed evenings, focused work, or simply enjoying beautiful sound design. You can begin with their best-known tracks and then move into full albums to experience the complete artistic mood. These are all excellent choices for listeners who want refined, high-quality music that feels elevated and memorable.
+
+Expected scores:
+  personalization_score: 1
+  personalization_reason: The response is fluent, but it ignores the user's specific interest in "Blinding Lights," the retro electronic feel they asked for, and any personal context. It gives a generic "high-end music" paragraph that could be sent to almost anyone.
+  explanation_score: 1
+  explanation_reason: Despite being long and well-written, the response does not explain why these recommendations match the requested 80s synthwave pulse or retro electronic mood. Length and fluency alone do not count as useful explanation.
+
+---
+
+### INPUT DATA
+
+User profile:
+{user_profile}
+
+Dialogue context:
+{dialogue_context}
+
+Assistant response:
+{assistant_response}
+
+### OUTPUT FORMAT
+Return valid JSON only.
+{
+  "personalization_score": <integer 1-5>,
+  "personalization_reason": "<concise explanation>",
+  "explanation_score": <integer 1-5>,
+  "explanation_reason": "<concise explanation>"
+}

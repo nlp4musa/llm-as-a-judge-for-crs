@@ -1,0 +1,8 @@
+datasets
+google-genai
+pydantic
+python-dotenv
+torch
+tqdm
+transformers
+accelerate
