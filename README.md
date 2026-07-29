@@ -1,11 +1,13 @@
 # LLM-as-a-Judge for Conversational Music Recommendation
+- **arXiv:** http://arxiv.org/abs/2607.25640
+- **Conference:** [20th ACM Conference on Recommender Systems (RecSys '26)](https://recsys.acm.org/recsys26/)
+
 
 **LLM-as-a-Judge for Evaluating System Responses in Conversational Music Recommendation**
 
 > Seungheon Doh, Bruno Sguerra, Sergio Oramas, Elena V. Epure, and Juhan Nam.
 
 > Accepted as a short paper at the **20th ACM Conference on Recommender Systems (RecSys '26)**, held September 28–October 2, 2026, in Minneapolis, Minnesota, USA.
-
 
 ## Overview
 
@@ -22,12 +24,6 @@ The released pipeline has two stages:
 
 1. Generate conversational recommendation responses with open-source models.
 2. Evaluate each response using an LLM judge conditioned on the user profile, full dialogue context, recommended-track metadata, and the original domain-specific rubric.
-
-## Links
-
-- **arXiv:** Coming soon — the link will be added after the preprint is released.
-- **Conference:** [20th ACM Conference on Recommender Systems (RecSys '26)](https://recsys.acm.org/recsys26/)
-- **Proceedings/DOI:** Coming soon.
 
 ## Setup
 
